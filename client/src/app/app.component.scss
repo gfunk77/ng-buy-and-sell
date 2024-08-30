@@ -1,0 +1,21 @@
+.container {
+  width: 92%;
+  max-width: 1440px;
+  margin: 2rem auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.big-screen {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #fefefe;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.big-screen.active {
+  color: #ffd740;
+}

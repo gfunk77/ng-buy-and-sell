@@ -1,1 +1,52 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+  <span class="spacer"></span>
+  @if(isScreenSmall) {
+  <ng-container *ngTemplateOutlet="smallScreen"></ng-container>
+  } @else {
+  <ng-container *ngTemplateOutlet="largeScreen"></ng-container>
+  }
+</mat-toolbar>
+
+<ng-template #smallScreen>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <mat-nav-list>
+      @for (link of links; track $index) {
+      <mat-list-item>
+        <a
+          matListItemTitle
+          mat-menu-item
+          [routerLink]="link.path"
+          routerLinkActive="active"
+        >
+          <mat-icon matListItemIcon color="primary">{{ link.icon }}</mat-icon>
+          {{ link.title.at(0)?.toLocaleUpperCase() + link.title.slice(1) }}
+        </a>
+      </mat-list-item>
+
+      }
+    </mat-nav-list>
+  </mat-menu>
+</ng-template>
+
+<ng-template #largeScreen>
+  <mat-nav-list>
+    @for (link of links; track $index) {
+    <a
+      class="big-screen"
+      mat-button
+      [routerLink]="link.path"
+      routerLinkActive="active"
+    >
+      {{ link.title }}
+    </a>
+    }
+  </mat-nav-list>
+</ng-template>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
