@@ -1,4 +1,10 @@
 <h2>My Listings</h2>
+<div>
+  <a mat-button color="primary" [routerLink]="['/new-listing']">
+    <mat-icon>add_circle</mat-icon>
+    Create New Listing
+  </a>
+</div>
 <div class="grid-container">
   @for (item of listings; track $index) {
 
@@ -13,16 +19,16 @@
       <p>{{ item.description }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-button color="primary" [routerLink]="['/listing', item.id]"
-        >Details</a
+      <a
+        mat-button
+        color="primary"
+        [routerLink]="['/my-listing', 'edit', item.id]"
+        >Edit</a
       >
+      <button mat-button color="warn" (click)="onDelete(item.id)">
+        Delete
+      </button>
     </mat-card-actions>
   </mat-card>
   }
-</div>
-<div>
-  <a mat-button color="primary" [routerLink]="['/new-listing']">
-    <mat-icon>add</mat-icon>
-    Create New Listing
-  </a>
 </div>

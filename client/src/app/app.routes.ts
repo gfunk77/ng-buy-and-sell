@@ -23,11 +23,6 @@ export const routes: Routes = [
     title: 'Listing Detail',
   },
   {
-    path: 'listing/edit/:id',
-    component: EditListingComponent,
-    title: 'Edit Listing',
-  },
-  {
     path: 'contact/:id',
     component: ContactComponent,
     title: 'Contact',
@@ -36,6 +31,11 @@ export const routes: Routes = [
     path: 'my-listings',
     component: MyListingsComponent,
     title: 'My Listings',
+  },
+  {
+    path: 'my-listing/edit/:id',
+    component: EditListingComponent,
+    title: 'Edit Listing',
   },
   {
     path: 'new-listing',

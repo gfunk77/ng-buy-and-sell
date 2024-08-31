@@ -26,4 +26,8 @@ export class MyListingsComponent implements OnInit {
   ngOnInit(): void {
     this.listings = fakeData;
   }
+
+  onDelete(id: number): void {
+    console.log('Delete listing with id: ', id);
+  }
 }
