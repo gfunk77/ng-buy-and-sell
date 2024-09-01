@@ -1,44 +1,4 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Edit Listing</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="editListingForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="name" />
-        @if(editListingForm.get('name')?.touched &&
-        editListingForm.get('name')?.hasError('required')) {
-        <mat-error>{{ getErrorMessage("name") }}</mat-error>
-        }
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Price</mat-label>
-        <input matInput type="number" formControlName="price" />
-        @if(editListingForm.get('price')?.touched &&
-        editListingForm.get('price')?.hasError('required')) {
-        <mat-error>{{ getErrorMessage("price") }}</mat-error>
-        }
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-        @if(editListingForm.get('description')?.touched &&
-        editListingForm.get('description')?.hasError('required')) {
-        <mat-error>{{ getErrorMessage("description") }}</mat-error>
-        }
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="onSubmit()"
-      [disabled]="editListingForm.invalid"
-    >
-      Edit Listing
-    </button>
-    <button mat-raised-button color="accent" (click)="goBack()">Cancel</button>
-  </mat-card-actions>
-</mat-card>
+<app-listing-data-form
+  [listing]="listing"
+  (submit)="onSubmit($event)"
+></app-listing-data-form>
