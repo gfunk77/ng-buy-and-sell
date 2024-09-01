@@ -1,0 +1,22 @@
+# Node.js specific
+node_modules/
+npm-debug.log
+
+# Hapi specific
+/dist/
+/public/
+
+# Editor and IDE specific
+*.swp
+*.DS_Store
+*.tmp
+*.log
+*.sync
+.vscode/*
+.vscode
+
+# Mac OS X specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
