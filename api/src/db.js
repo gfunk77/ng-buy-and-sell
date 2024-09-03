@@ -20,7 +20,7 @@ export const db = {
   query: async (queryString, escapedValues) => {
     try {
       const [results, fields] = await connection.query(queryString, escapedValues);
-      console.log(results);
+
       return [results, fields];
     } catch (error) {
       console.error('Error querying the database: ', error);

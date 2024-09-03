@@ -9,7 +9,7 @@ export const getListing = {
 
     const [results] = await db.query('SELECT * FROM listings WHERE id = ?', [id]);
 
-    const listing = results[0];
+    const listing = results;
 
     if (!listing) {
       throw Boom.notFound(`Listing not found with id: ${id}`);
