@@ -33,6 +33,7 @@ export class ListingDataFormComponent {
     name: ['', Validators.required],
     description: ['', Validators.required],
     price: [0, [Validators.required, Validators.min(1)]],
+    views: [0],
   });
 
   ngOnInit(): void {
@@ -61,6 +62,7 @@ export class ListingDataFormComponent {
       name: formValue.name ?? '',
       description: formValue.description ?? '',
       price: formValue.price ?? 0,
+      views: formValue.views ?? 0,
     });
   }
 
