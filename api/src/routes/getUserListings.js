@@ -6,7 +6,7 @@ export const getUserListings = {
   handler: async (req, h) => {
     const { userId } = req.params;
 
-    const [results] = await db.query('SELECT * FROM listings WHERE user_id = ?', [userId]);
+    const { results } = await db.query('SELECT * FROM listings WHERE user_id = $1', [userId]);
 
     return results;
   },

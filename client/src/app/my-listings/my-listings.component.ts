@@ -27,7 +27,7 @@ export class MyListingsComponent implements OnInit {
     this.listings = fakeData;
   }
 
-  onDelete(id: number): void {
+  onDelete(id: string): void {
     console.log('Delete listing with id: ', id);
   }
 }

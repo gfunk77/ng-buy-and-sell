@@ -49,7 +49,7 @@ export class ContactComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');
     const item = fakeData.find((item) => item.id === id);
     if (item) {
       this.listing = item;

@@ -26,7 +26,7 @@ export class ListingDetailComponent implements OnInit {
   listing!: Listing;
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');
     const item = fakeData.find((listing) => listing.id === id);
     if (item) {
       this.listing = item;
@@ -37,7 +37,7 @@ export class ListingDetailComponent implements OnInit {
     this.router.navigate(['/listings']);
   }
 
-  toContact(id: number) {
+  toContact(id: string) {
     this.router.navigate(['/contact', id]);
   }
 }

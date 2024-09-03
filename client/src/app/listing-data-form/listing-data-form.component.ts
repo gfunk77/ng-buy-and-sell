@@ -29,7 +29,7 @@ export class ListingDataFormComponent {
   submit = output<Listing>();
 
   dataForm = this.fb.group({
-    id: [0],
+    id: [''],
     name: ['', Validators.required],
     description: ['', Validators.required],
     price: [0, [Validators.required, Validators.min(1)]],
@@ -58,7 +58,7 @@ export class ListingDataFormComponent {
     const formValue = this.dataForm.value;
     this.submit.emit({
       ...formValue,
-      id: formValue.id || 0,
+      id: formValue.id || '',
       name: formValue.name ?? '',
       description: formValue.description ?? '',
       price: formValue.price ?? 0,
