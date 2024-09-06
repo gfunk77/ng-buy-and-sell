@@ -64,8 +64,8 @@ export const db = {
       const client = await pool.connect();
       try {
         const res = await client.query(queryString, escapedValues);
-        console.log(res);
-        return { results: res.rows, fields: res.fields };
+        // return { results: res.rows, fields: res.fields };
+        return res.rows;
       } finally {
         client.release();
       }

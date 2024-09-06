@@ -7,7 +7,7 @@ export const updateListing = {
   handler: async (req, h) => {
     const { id } = req.params;
     const { name, description, price } = req.payload;
-    const userId = 'e308293a-6865-4f61-b816-270c0c5cf100';
+    const userId = 'e70f25da-8a91-4d0f-b91c-f125f6a447e1';
 
     const updatedResult = await db.query(
       `
