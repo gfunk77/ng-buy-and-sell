@@ -65,6 +65,7 @@ export const db = {
       try {
         const res = await client.query(queryString, escapedValues);
         // return { results: res.rows, fields: res.fields };
+        console.log(res.rows);
         return res.rows;
       } finally {
         client.release();

@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Listing } from '../models/listing';
-import { fakeData } from '../fakeData';
+import { ListingsService } from '../listings.service';
 
 @Component({
   selector: 'app-listing-detail',
@@ -21,16 +21,30 @@ import { fakeData } from '../fakeData';
   styleUrl: './listing-detail.component.scss',
 })
 export class ListingDetailComponent implements OnInit {
+  listingService = inject(ListingsService);
   router: Router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
-  listing!: Listing;
+  listing: Listing | undefined;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    const item = fakeData.find((listing) => listing.id === id);
-    if (item) {
-      this.listing = item;
-    }
+    // const item = fakeData.find((listing) => listing.id === id);
+    // if (item) {
+    //   this.listing = item;
+    // }
+    // if (id) {
+    //   this.listingService.getListing(id).subscribe({
+    //     next: (listing) => {
+    //       this.listing = listing;
+    //       this.isLoading = false;
+    //     },
+    //   });
+    // }
+    console.log(id);
+    if (!id) return;
+    this.listingService
+      .getListing(id)
+      .subscribe((listing) => (this.listing = listing));
   }
 
   goBack() {
