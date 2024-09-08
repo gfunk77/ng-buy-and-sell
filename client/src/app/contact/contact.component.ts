@@ -3,11 +3,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Listing } from '../models/listing';
-import { fakeData } from '../fakeData';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { ListingsService } from '../listings.service';
 
 @Component({
   selector: 'app-contact',
@@ -27,6 +27,7 @@ export class ContactComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   router: Router = inject(Router);
   fb: FormBuilder = inject(FormBuilder);
+  listingService = inject(ListingsService);
 
   listing!: Listing;
 
@@ -50,13 +51,20 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    const item = fakeData.find((item) => item.id === id);
-    if (item) {
-      this.listing = item;
+    // const item = fakeData.find((item) => item.id === id);
+    // if (item) {
+    //   this.listing = item;
+    //   this.contactForm.patchValue({
+    //     message: `Hi, I'm interested in your ${item.name}`,
+    //   });
+    // }
+    if (!id) return;
+    this.listingService.getListing(id).subscribe((listing) => {
+      this.listing = listing;
       this.contactForm.patchValue({
-        message: `Hi, I'm interested in your ${item.name}`,
+        message: `Hi, I'm interested in your ${listing.name}`,
       });
-    }
+    });
   }
 
   getErrorMessage(controlName: string) {

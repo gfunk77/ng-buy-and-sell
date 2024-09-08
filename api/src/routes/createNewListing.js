@@ -9,7 +9,7 @@ export const createNewListing = {
 
     const { name = '', description = '', price = 0 } = req.payload;
 
-    const userId = uuidv4();
+    const userId = '12345';
     const views = 0;
     await db.query(
       `

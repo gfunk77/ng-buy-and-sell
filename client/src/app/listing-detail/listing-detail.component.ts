@@ -3,9 +3,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Listing } from '../models/listing';
 import { ListingsService } from '../listings.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-listing-detail',
@@ -15,6 +17,7 @@ import { ListingsService } from '../listings.service';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     RouterLink,
   ],
   templateUrl: './listing-detail.component.html',
@@ -24,27 +27,19 @@ export class ListingDetailComponent implements OnInit {
   listingService = inject(ListingsService);
   router: Router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
-  listing: Listing | undefined;
+  listing!: Listing;
+  isLoading = true;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    // const item = fakeData.find((listing) => listing.id === id);
-    // if (item) {
-    //   this.listing = item;
-    // }
-    // if (id) {
-    //   this.listingService.getListing(id).subscribe({
-    //     next: (listing) => {
-    //       this.listing = listing;
-    //       this.isLoading = false;
-    //     },
-    //   });
-    // }
-    console.log(id);
     if (!id) return;
-    this.listingService
-      .getListing(id)
-      .subscribe((listing) => (this.listing = listing));
+    this.listingService.addViewToListing(id).subscribe(() => {
+      console.log('View added');
+    });
+    this.listingService.getListing(id).subscribe((listing) => {
+      this.listing = listing;
+      this.isLoading = false;
+    });
   }
 
   goBack() {

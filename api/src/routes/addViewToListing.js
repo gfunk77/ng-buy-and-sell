@@ -8,7 +8,7 @@ export const addViewToListing = {
 
     await db.query('UPDATE listings SET views = views + 1 WHERE id = $1', [id]);
 
-    const { results } = await db.query('SELECT * FROM listings WHERE id = $1', [id]);
+    const results = await db.query('SELECT * FROM listings WHERE id = $1', [id]);
 
     const updatedListing = results;
     return updatedListing;

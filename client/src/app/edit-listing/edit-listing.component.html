@@ -1,4 +1,10 @@
+@if (listing) {
 <app-listing-data-form
   [listing]="listing"
   (submit)="onSubmit($event)"
 ></app-listing-data-form>
+} @else {
+<div class="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+}

@@ -1,4 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --toolbar-height: 56px;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --toolbar-height: 64px;
+  }
+}
+
+mat-card {
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.spinner {
+  height: calc(100vh - (var(--toolbar-height) + 2rem));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
