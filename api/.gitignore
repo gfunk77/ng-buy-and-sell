@@ -20,3 +20,7 @@ npm-debug.log
 
 # Windows specific
 Thumbs.db
+
+#credentials
+credentials.json
+.env

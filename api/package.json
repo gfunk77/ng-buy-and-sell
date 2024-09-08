@@ -13,6 +13,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.3.10",
+    "firebase-admin": "^12.4.0",
     "install": "^0.13.0",
     "nodemon": "^3.1.4",
     "npm": "^10.8.3",
