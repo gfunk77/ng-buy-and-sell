@@ -43,5 +43,5 @@ testem.log
 Thumbs.db
 
 # Environments
-/environments/
+/src/environments/
 
