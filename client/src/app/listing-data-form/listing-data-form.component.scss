@@ -8,6 +8,11 @@ mat-form-field {
   width: 100%;
 }
 
+mat-card {
+  max-width: 500px;
+  margin-inline: auto;
+}
+
 mat-card-content {
   margin: 1rem 0;
 }

@@ -19,11 +19,6 @@ body {
   }
 }
 
-mat-card {
-  max-width: 500px;
-  margin-inline: auto;
-}
-
 .spinner {
   height: calc(100vh - (var(--toolbar-height) + 2rem));
   display: flex;

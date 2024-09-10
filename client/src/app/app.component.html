@@ -47,6 +47,8 @@
   </mat-nav-list>
 </ng-template>
 
-<div class="container">
+<button mat-button (click)="signInWithGoogle()">Sign In</button>
+<div class="container" *ngIf="user$ | async">
+  <button mat-button (click)="signOutOfGoogle()">Sign Out</button>
   <router-outlet></router-outlet>
 </div>

@@ -6,7 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,9 @@ import { MatMenu, MatMenuModule } from '@angular/material/menu';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  authService = inject(AuthService);
   breakpointObserver = inject(BreakpointObserver);
+  user$ = this.authService.user$;
   title = 'Buy and Sell';
   links = [
     { path: '/listings', title: 'listings', icon: 'shop' },
@@ -40,5 +43,13 @@ export class AppComponent implements OnInit {
       .subscribe((result) => {
         this.isScreenSmall = result.matches;
       });
+  }
+
+  signInWithGoogle() {
+    this.authService.signInWithGoogle();
+  }
+
+  signOutOfGoogle() {
+    this.authService.signOut();
   }
 }
